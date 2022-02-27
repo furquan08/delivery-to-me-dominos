@@ -14,7 +14,6 @@
 package com.jos.dem.springboot.cucumber.dominos;
 
 import com.jos.dem.springboot.cucumber.CucumberApplication;
-import com.jos.dem.springboot.cucumber.model.Person;
 import com.jos.dem.springboot.cucumber.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -35,15 +34,6 @@ public class DeliverToMeIntegrationTest {
       .uri("/deliverToMeSpots?longitude="+-83.684302+"&latitude="+42.321008)
       .retrieve()
     .bodyToFlux(Response.class);
-  }
-
-
-
-  Mono<Person> getPerson(String nickname) throws Exception {
-    return webClient.get()
-      .uri("/persons/" + nickname)
-      .retrieve()
-    .bodyToMono(Person.class);
   }
 
 }

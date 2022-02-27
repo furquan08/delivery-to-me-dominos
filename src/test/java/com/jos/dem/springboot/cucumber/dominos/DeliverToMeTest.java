@@ -31,7 +31,6 @@ public class DeliverToMeTest extends DeliverToMeIntegrationTest {
         responses = deliverToMeSpots(longitude,latitude).collectList().block();
 
    }
-
-
+   
     }
 
