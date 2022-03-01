@@ -11,10 +11,11 @@
   limitations under the License.
 */
 
-package com.jos.dem.springboot.cucumber.dominos;
+package com.jos.dem.springboot.cucumber.user;
 
 import com.jos.dem.springboot.cucumber.CucumberApplication;
 import com.jos.dem.springboot.cucumber.model.Response;
+import com.jos.dem.springboot.cucumber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,17 +26,22 @@ import reactor.core.publisher.Mono;
 
 @ContextConfiguration(classes = CucumberApplication.class)
 @WebAppConfiguration
-public class DeliverToMeIntegrationTest {
+public class UserIntegrationTest {
 
   @Autowired
-  @Qualifier("webClient")
+  @Qualifier("userWebclient")
   private WebClient webClient;
 
-  Flux<Response> deliverToMeSpots(double longitude, double latitude) throws Exception {
+ /* User shouldGetUser(String userId) throws Exception {
+    return webClient.get().uri(userId).retrieve().toEntity(User.class);
+
+  }*/
+
+  Mono<User> getUser(String useID) throws Exception {
     return webClient.get()
-      .uri("/deliverToMeSpots?longitude="+-83.684302+"&latitude="+42.321008)
-      .retrieve()
-    .bodyToFlux(Response.class);
+            .uri(useID)
+            .retrieve()
+            .bodyToMono(User.class);
   }
 
 }
