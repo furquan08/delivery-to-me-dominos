@@ -32,13 +32,13 @@ public class UsersTest extends UserIntegrationTest {
         user = getUser(nickname).block();
     }
 
-    @Then("I validate User data")
-    public void shouldValidateUserData() throws Exception {
+    @Then("^I validate all users$")
+    public void i_validate_all_users() {
         log.info("Running: I validate User data at " + new Date());
 
         assertAll("person",
-                () -> assertEquals("Gov. Chanda Bhattacharya", user.getName()),
-                () -> assertEquals("joseluis.delacruz@gmail.com", user.getEmail())
+                () -> assertEquals("Satyen Kocchar", user.getName()),
+                () -> assertEquals("kocchar_satyen@boehm-hammes.biz", user.getEmail())
         );
     }
 
