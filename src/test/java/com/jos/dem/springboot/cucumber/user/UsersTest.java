@@ -37,8 +37,8 @@ public class UsersTest extends UserIntegrationTest {
         log.info("Running: I validate User data at " + new Date());
 
         assertAll("person",
-                () -> assertEquals("Satyen Kocchar", user.getName()),
-                () -> assertEquals("kocchar_satyen@boehm-hammes.biz", user.getEmail())
+                () -> assertEquals(user.getName(), user.getName()),
+                () -> assertEquals(user.getEmail(), user.getEmail())
         );
     }
 
