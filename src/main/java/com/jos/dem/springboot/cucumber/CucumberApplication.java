@@ -14,9 +14,10 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class CucumberApplication {
 
 
-    private String sbsUrl = "https://gorest.co.in/public/v2/users/";
+    @Value("${store.boundary.service.url}")
+    private String sbsUrl;
 
-    private String usersApi = "https://gorest.co.in/public/v2/users/";
+   // private String usersApi = "https://gorest.co.in/public/v2/users/";
 
 	public static void main(String[] args) {
 		SpringApplication.run(CucumberApplication.class, args);
@@ -33,7 +34,7 @@ public class CucumberApplication {
               .build();
   }
 
-    @Bean
+   /* @Bean
     @Qualifier("userWebclient")
     WebClient getUserWebClient() {
         return WebClient
@@ -41,6 +42,6 @@ public class CucumberApplication {
                 .baseUrl(usersApi)
                 .defaultHeader(CONTENT_TYPE, APPLICATION_JSON_VALUE)
                 .build();
-    }
+    }*/
 
 }

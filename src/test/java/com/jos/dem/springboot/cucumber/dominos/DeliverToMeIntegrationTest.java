@@ -31,9 +31,9 @@ public class DeliverToMeIntegrationTest {
   @Qualifier("webClient")
   private WebClient webClient;
 
-  Flux<Response> deliverToMeSpots(double longitude, double latitude) throws Exception {
+  Flux<Response> deliverToMeSpots(String longitude, String latitude) throws Exception {
     return webClient.get()
-      .uri("/deliverToMeSpots?longitude="+-83.684302+"&latitude="+42.321008)
+      .uri("/deliverToMeSpots?longitude="+Double.parseDouble(longitude)+"&latitude="+Double.parseDouble(latitude))
       .retrieve()
     .bodyToFlux(Response.class);
   }
